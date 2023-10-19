@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!-- WARNING: URI is not registered (Settings | Languages & Frameworks | Schemas and DTDs)
+See: https://stackoverflow.com/questions/38730992/thymleaf-for-spring-in-intellij-uri-is-not-registered -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sunny Tours</title>
+    <link rel='shortcut icon' th:href="@{icons/favicon.ico}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+</head>
+<body style="background-color: #ccffcc;">
+    <!-- content -->
+    <div class="d-flex justify-content-center align-items-center text-white p-3"
+         style="background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); font-size: 32px;">
+        <i class="bi-sun-fill" style="font-size: 3rem; color: #f1f73e;"></i>&nbsp;Sunny Tours Feedback
+    </div>
+    <div>
+        <img th:src="@{images/palms_1920.jpg}" class="img-fluid" alt="image">
+    </div>
+    <div class="container p-5">
+        <div class="container" style="padding-bottom: 25px;">
+            <div class="p-3" style="font-style: italic; background-color: #ecf02a; border-radius: 10px; width: 100%">We don't just sell tours; we create experiences. Let us be your guide to unforgettable journeys and your partner in exploration. Whether you seek relaxation, adventure, culture, or all of the above, we are ready to make your travel dreams a reality. Pack your bags, and let's embark on an unforgettable adventure together.
+            </div>
+        </div>
+        <div class="container" style="padding-bottom: 30px;">
+            <h3 style="font-size: 22px; text-align: center;">Our reviews</h3>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+                <div class="card p-2 m-0.5" th:each="feedback:${places}" style="background-color: #bef8f0;">
+                    <img th:src="@{${feedback.img}}" class="card-img-top" alt="card-img">
+                    <div class="card-body" >
+                        <p class="card-text visually-hidden" th:text="${feedback.id}"></p>
+                        <p class="card-text" th:text="${feedback.name}"></p>
+                        <p class="card-text" th:text="${feedback.descr}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <h3 style="font-size: 22px; text-align: center;">Resorts</h3>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+            <div class="card p-2 m-0.5" th:each="resort:${resorts}" style="background-color: #bef8f0;">
+                <img th:src="@{${resort.img}}" class="card-img-top" alt="card-img">
+                <div class="card-body">
+                    <p class="card-text visually-hidden" th:text="${resort.id}"></p>
+                    <p class="card-text" th:text="${resort.descr}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Button trigger modal -->
+    <div class="d-flex justify-content-center align-items-center p-3">
+        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#proposalModal">
+            <i class="bi bi-emoji-sunglasses"></i> Reach out
+        </button>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="proposalModal" tabindex="-1" aria-labelledby="proposalModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="proposalModalLabel" class="modal-title" style="color: #c72c67"><i class="bi bi-emoji-sunglasses"></i>
+                        Reach to us</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body justify-content-center">
+                    <img src="https://www.earthinpictures.com/world/usa/seattle/dexter_horton_building.jpg" alt="image" style="
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  padding-bottom: 5px;
+">
+                    <p style="font-size: 16px; color: #c72c67;">Our main office. Mobile number: +555 785 7438</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /content -->
+    <!-- footer -->
+    <div class="container-fluid justify-content-center p-3" style="background-color: #99e1f7;">
+        <p class="text-center">
+            <i class="bi bi-facebook"></i>&nbsp;&nbsp;
+            <i class="bi bi-instagram"></i>&nbsp;&nbsp;
+            <i class="bi bi-telegram"></i>
+        </p>
+        <p class="text-center" style="font-size: 14px">Address: Rainbow St. 12, MainCity, 00125<br>
+            <span class="bi bi-telephone-fill"></span> Phone: +011 555 123-4587<br>
+            <span class="bi bi-envelope"></span> E-mail: sunnytours@mail.com<br>
+            <span class="p-3" style="font-size: 12px">&copy; Sunny Tours, LLC</span>
+        </p>
+    </div>
+    <!-- /footer -->
+</body>
+</html>
+
